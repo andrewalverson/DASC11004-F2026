@@ -2,5 +2,5 @@
 
 `python_scripts`: standalone Python scripts
 
-	- `hello-world.py`: first script, 31-Aug-2026
+- `hello-world.py`: first script, 31-Aug-2026
 

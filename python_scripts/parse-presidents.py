@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 
 from collections import defaultdict # we use this to avoid KeyErrors
+import csv
 
 # make some dictionaries
 presidents = defaultdict(str) # key = president num, value = president name
@@ -11,21 +12,26 @@ parties    = defaultdict(int) # key = party name, value = party count
 input_file = '../data/presidents.csv'
 
 with open(input_file, 'r') as prez_file:
+    # create a csv reader object
+    reader = csv.reader(prez_file, delimiter=',')
+
     # skip the first line (the header line)
-    next(prez_file)
+    next(reader)
 
     # loop over the file line-by-line
-    for line in prez_file:
+    for line in reader:
+
+        # don't need to split manually anymore – csv.reader does it for us
         # split each line at the comma to create a list called 'columns'
-        columns = line.split(',')
+        # columns = line.split(',')
 
         # could do this if wanted to
-        prez_num = columns[0]
+        prez_num = line[1]
 
         # loading our dictionaries
-        presidents[columns[0]] = columns[1]
-        wikis[columns[0]] = columns[2]
-        parties[columns[5].strip()] += 1
+        presidents[line[0]] = line[1]
+        wikis[line[0]] = line[2]
+        parties[line[5].strip()] += 1
 
 """
 # get stuff from our dictionary
@@ -47,6 +53,5 @@ for number, page in wikis.items():
 # loop over the party count dictionary
 for whatever in parties.keys():
     print(f"{whatever}: {parties[whatever]}")
-
 
     

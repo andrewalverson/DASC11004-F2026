@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
-
+import my_neat_functions
 
 ####---- function to get command-line arguments
 
@@ -22,7 +22,7 @@ def get_input():
     # parse the arguments, store the parsed arguments in a variable called "args"
     return parser.parse_args()
 
-
+"""
 ####---- function to calculate the fibonacci number
 def calc_fib(n):
     # calculate the fibonacci number
@@ -36,7 +36,7 @@ def calc_fib(n):
     fibonacci_number = a
     golden_ratio = b/a
     return fibonacci_number, golden_ratio
-
+"""
 
 ####---- function to print the output
 def print_output(pos, fib_num, golden_ratio):
@@ -54,7 +54,7 @@ def print_output(pos, fib_num, golden_ratio):
 def main():
     # call the function to calculate the fibonacci number
     # the real business happens here
-    fib, golden_ratio = calc_fib(args.position)
+    fib, golden_ratio = my_neat_functions.calc_fib(args.position)
 
     # print the output
     print_output(args.position, fib, golden_ratio)
